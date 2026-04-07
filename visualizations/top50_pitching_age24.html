@@ -125,9 +125,9 @@
   .rank-num.top5 { color: #7a6030; }
 
   .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
+    width: 42px;
+    height: 50px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,7 +142,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center 15%;
   }
 
   .av-gold { background: #2a1f08; color: #c8952a; border: 1.5px solid #5a3d0f; }
@@ -223,58 +223,57 @@
 </div>
 
 <script>
-const CDN = "https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/";
 const data = [
-  {n:"Roger Clemens",y:1987,t:"BOS",war:8.4,era:2.97,fip:2.91,k:22.1,bb:7.2,hs:null},
-  {n:"Tom Bradley",y:1971,t:"CHW",war:7.7,era:2.96,fip:2.54,k:17.2,bb:6.2,hs:null},
-  {n:"Denny McLain",y:1968,t:"DET",war:7.2,era:1.96,fip:2.53,k:21.7,bb:4.9,hs:null},
-  {n:"Jon Matlack",y:1974,t:"NYM",war:7.2,era:2.41,fip:2.42,k:18.1,bb:7.1,hs:null},
-  {n:"Joe Coleman",y:1971,t:"DET",war:7.1,era:3.15,fip:2.65,k:20.1,bb:8.2,hs:null},
-  {n:"Tim Lincecum",y:2008,t:"SFG",war:7.1,era:2.62,fip:2.62,k:28.6,bb:9.1,hs:null},
-  {n:"Matt Harvey",y:2013,t:"NYM",war:6.9,era:2.27,fip:2.0,k:27.7,bb:4.5,hs:null},
-  {n:"Robin Roberts",y:1951,t:"PHI",war:6.7,era:3.03,fip:3.14,k:10.0,bb:5.0,hs:null},
-  {n:"Felix Hernandez",y:2010,t:"SEA",war:6.7,era:2.27,fip:3.04,k:23.2,bb:7.0,hs:null},
-  {n:"Jim Palmer",y:1970,t:"BAL",war:6.2,era:2.71,fip:3.22,k:15.8,bb:8.0,hs:null},
-  {n:"Bert Blyleven",y:1975,t:"MIN",war:6.2,era:3.0,fip:2.99,k:21.1,bb:7.6,hs:null},
-  {n:"Roy Oswalt",y:2002,t:"HOU",war:6.2,era:3.01,fip:2.99,k:21.8,bb:6.5,hs:null},
-  {n:"Rick Reuschel",y:1973,t:"CHC",war:6.1,era:3.0,fip:2.82,k:16.7,bb:6.2,hs:null},
-  {n:"Javier Vazquez",y:2001,t:"MON",war:6.1,era:3.42,fip:3.21,k:23.2,bb:4.9,hs:null},
-  {n:"Clayton Kershaw",y:2012,t:"LAD",war:6.1,era:2.53,fip:2.89,k:25.4,bb:7.0,hs:null},
-  {n:"Steve Busby",y:1974,t:"KCR",war:5.9,era:3.39,fip:2.88,k:16.2,bb:7.5,hs:null},
-  {n:"Ken Holtzman",y:1970,t:"CHC",war:5.8,era:3.38,fip:3.6,k:16.7,bb:7.8,hs:null},
-  {n:"Jim O'Toole",y:1961,t:"CIN",war:5.6,era:3.1,fip:3.13,k:16.8,bb:8.8,hs:null},
-  {n:"Bret Saberhagen",y:1988,t:"KCR",war:5.5,era:3.8,fip:3.08,k:15.7,bb:5.4,hs:null},
-  {n:"Kevin Millwood",y:1999,t:"ATL",war:5.5,era:2.68,fip:3.53,k:22.6,bb:6.5,hs:null},
-  {n:"Shane Bieber",y:2019,t:"CLE",war:5.5,era:3.28,fip:3.32,k:30.2,bb:4.7,hs:"Shane_Bieber_TOR_2025.jpg"},
-  {n:"Spencer Strider",y:2023,t:"ATL",war:5.5,era:3.86,fip:2.85,k:36.8,bb:7.6,hs:"Spencer_Strider_ATL_2025.jpg"},
-  {n:"Don Newcombe",y:1950,t:"BRO",war:5.4,era:3.7,fip:3.55,k:11.8,bb:6.8,hs:null},
-  {n:"Dave Righetti",y:1983,t:"NYY",war:5.4,era:3.44,fip:2.87,k:18.8,bb:7.4,hs:null},
-  {n:"Fernando Valenzuela",y:1985,t:"LAD",war:5.4,era:2.45,fip:2.95,k:18.8,bb:9.1,hs:null},
-  {n:"Jake Peavy",y:2005,t:"SDP",war:5.4,era:2.88,fip:2.89,k:26.6,bb:6.2,hs:null},
-  {n:"Luis Severino",y:2018,t:"NYY",war:5.4,era:3.39,fip:2.95,k:28.2,bb:5.9,hs:"Luis_Severino_ATH_2025.jpg"},
-  {n:"Freddy Garcia",y:2001,t:"SEA",war:5.3,era:3.05,fip:3.48,k:16.8,bb:7.1,hs:null},
-  {n:"Tom Brewer",y:1956,t:"BOS",war:5.2,era:3.5,fip:3.51,k:12.2,bb:10.8,hs:null},
-  {n:"Dave Boswell",y:1969,t:"MIN",war:5.2,era:3.23,fip:3.19,k:17.8,bb:9.3,hs:null},
-  {n:"Bob Moose",y:1972,t:"PIT",war:5.2,era:2.91,fip:2.43,k:15.5,bb:5.1,hs:null},
-  {n:"Len Barker",y:1980,t:"CLE",war:5.2,era:4.17,fip:3.29,k:17.8,bb:8.7,hs:null},
-  {n:"Lucas Giolito",y:2019,t:"CHW",war:5.2,era:3.41,fip:3.43,k:32.3,bb:8.1,hs:"Lucas_Giolito_BOS_2025.jpg"},
-  {n:"Mickey Lolich",y:1965,t:"DET",war:5.1,era:3.44,fip:2.92,k:22.3,bb:7.1,hs:null},
-  {n:"Vida Blue",y:1974,t:"OAK",war:5.1,era:3.25,fip:3.18,k:15.0,bb:8.5,hs:null},
-  {n:"Greg Maddux",y:1990,t:"CHC",war:5.1,era:3.46,fip:3.15,k:14.2,bb:7.0,hs:null},
-  {n:"Pedro Martinez",y:1996,t:"MON",war:5.1,era:3.7,fip:3.27,k:24.6,bb:7.8,hs:null},
-  {n:"Gerrit Cole",y:2015,t:"PIT",war:5.1,era:2.6,fip:2.66,k:24.3,bb:5.3,hs:"Gerrit_Cole_NYA_2024.jpg"},
-  {n:"Walker Buehler",y:2019,t:"LAD",war:5.1,era:3.26,fip:3.01,k:29.2,bb:5.0,hs:"Walker_Buehler_BOS_2025.jpg"},
-  {n:"Julio Urias",y:2021,t:"LAD",war:5.0,era:2.96,fip:3.13,k:26.2,bb:5.1,hs:"Julio_Urias_LAN_2023.jpg"},
-  {n:"Jim Maloney",y:1964,t:"CIN",war:4.9,era:2.71,fip:2.75,k:24.2,bb:9.4,hs:null},
-  {n:"Steve Carlton",y:1969,t:"STL",war:4.9,era:2.17,fip:2.79,k:21.7,bb:9.6,hs:null},
-  {n:"Brad Radke",y:1997,t:"MIN",war:4.9,era:3.87,fip:3.81,k:17.6,bb:4.9,hs:null},
-  {n:"Justin Thompson",y:1997,t:"DET",war:4.9,era:3.02,fip:3.83,k:16.9,bb:7.4,hs:null},
-  {n:"Bob Rush",y:1950,t:"CHC",war:4.8,era:3.71,fip:3.58,k:8.5,bb:8.5,hs:null},
-  {n:"Curt Simmons",y:1953,t:"PHI",war:4.8,era:3.21,fip:3.43,k:13.9,bb:8.3,hs:null},
-  {n:"Johnny Antonelli",y:1954,t:"NYG",war:4.8,era:2.3,fip:3.48,k:14.2,bb:8.8,hs:null},
-  {n:"Dave Stieb",y:1982,t:"TOR",war:4.8,era:3.25,fip:3.79,k:11.9,bb:6.3,hs:null},
-  {n:"Kevin Appier",y:1992,t:"KCR",war:4.8,era:2.46,fip:2.98,k:17.6,bb:8.0,hs:null},
-  {n:"Chris Sale",y:2013,t:"CHW",war:4.8,era:3.07,fip:3.17,k:26.1,bb:5.3,hs:null},
+  {n:"Roger Clemens",y:1987,t:"BOS",war:8.4,era:2.97,fip:2.91,k:22.1,bb:7.2,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Roger_Clemens_NYA_2007.jpg"},
+  {n:"Tom Bradley",y:1971,t:"CHW",war:7.7,era:2.96,fip:2.54,k:17.2,bb:6.2,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Tom_Bradley_SFN_1975.jpg"},
+  {n:"Denny McLain",y:1968,t:"DET",war:7.2,era:1.96,fip:2.53,k:21.7,bb:4.9,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Denny_McLain_OAK_1972.jpg"},
+  {n:"Jon Matlack",y:1974,t:"NYM",war:7.2,era:2.41,fip:2.42,k:18.1,bb:7.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Jon_Matlack_TEX_1983.jpg"},
+  {n:"Joe Coleman",y:1971,t:"DET",war:7.1,era:3.15,fip:2.65,k:20.1,bb:8.2,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Joe_Coleman_PIT_1979.jpg"},
+  {n:"Tim Lincecum",y:2008,t:"SFG",war:7.1,era:2.62,fip:2.62,k:28.6,bb:9.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Tim_Lincecum_LAA_2016.jpg"},
+  {n:"Matt Harvey",y:2013,t:"NYM",war:6.9,era:2.27,fip:2.0,k:27.7,bb:4.5,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Matt_Harvey_BAL_2021.jpg"},
+  {n:"Robin Roberts",y:1951,t:"PHI",war:6.7,era:3.03,fip:3.14,k:10.0,bb:5.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Robin_Roberts_HOU_1966.jpg"},
+  {n:"Felix Hernandez",y:2010,t:"SEA",war:6.7,era:2.27,fip:3.04,k:23.2,bb:7.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Felix_Hernandez_SEA_2019.jpg"},
+  {n:"Jim Palmer",y:1970,t:"BAL",war:6.2,era:2.71,fip:3.22,k:15.8,bb:8.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Jim_Palmer_BAL_1984.jpg"},
+  {n:"Bert Blyleven",y:1975,t:"MIN",war:6.2,era:3.0,fip:2.99,k:21.1,bb:7.6,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Bert_Blyleven_CAL_1992.jpg"},
+  {n:"Roy Oswalt",y:2002,t:"HOU",war:6.2,era:3.01,fip:2.99,k:21.8,bb:6.5,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Roy_Oswalt_HOU_2009.jpg"},
+  {n:"Rick Reuschel",y:1973,t:"CHC",war:6.1,era:3.0,fip:2.82,k:16.7,bb:6.2,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Rick_Reuschel_SFN_1991.jpg"},
+  {n:"Javier Vazquez",y:2001,t:"MON",war:6.1,era:3.42,fip:3.21,k:23.2,bb:4.9,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Javier_Vazquez_ATL_2009.jpg"},
+  {n:"Clayton Kershaw",y:2012,t:"LAD",war:6.1,era:2.53,fip:2.89,k:25.4,bb:7.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Clayton_Kershaw_LAN_2025.jpg"},
+  {n:"Steve Busby",y:1974,t:"KCR",war:5.9,era:3.39,fip:2.88,k:16.2,bb:7.5,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Steve_Busby_KCA_1980.jpg"},
+  {n:"Ken Holtzman",y:1970,t:"CHC",war:5.8,era:3.38,fip:3.6,k:16.7,bb:7.8,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Ken_Holtzman_CHN_1979.jpg"},
+  {n:"Jim O'Toole",y:1961,t:"CIN",war:5.6,era:3.1,fip:3.13,k:16.8,bb:8.8,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Jim_O_Toole_CHA_1967.jpg"},
+  {n:"Bret Saberhagen",y:1988,t:"KCR",war:5.5,era:3.8,fip:3.08,k:15.7,bb:5.4,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Bret_Saberhagen_BOS_2001.jpg"},
+  {n:"Kevin Millwood",y:1999,t:"ATL",war:5.5,era:2.68,fip:3.53,k:22.6,bb:6.5,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Kevin_Millwood_SEA_2012.jpg"},
+  {n:"Shane Bieber",y:2019,t:"CLE",war:5.5,era:3.28,fip:3.32,k:30.2,bb:4.7,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Shane_Bieber_TOR_2025.jpg"},
+  {n:"Spencer Strider",y:2023,t:"ATL",war:5.5,era:3.86,fip:2.85,k:36.8,bb:7.6,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Spencer_Strider_ATL_2025.jpg"},
+  {n:"Don Newcombe",y:1950,t:"BRO",war:5.4,era:3.7,fip:3.55,k:11.8,bb:6.8,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Don_Newcombe_CLE_1960.jpg"},
+  {n:"Dave Righetti",y:1983,t:"NYY",war:5.4,era:3.44,fip:2.87,k:18.8,bb:7.4,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Dave_Righetti_CHA_1995.jpg"},
+  {n:"Fernando Valenzuela",y:1985,t:"LAD",war:5.4,era:2.45,fip:2.95,k:18.8,bb:9.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Fernando_Valenzuela_SLN_1997.jpg"},
+  {n:"Jake Peavy",y:2005,t:"SDP",war:5.4,era:2.88,fip:2.89,k:26.6,bb:6.2,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Jake_Peavy_SFN_2016.jpg"},
+  {n:"Luis Severino",y:2018,t:"NYY",war:5.4,era:3.39,fip:2.95,k:28.2,bb:5.9,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Luis_Severino_ATH_2025.jpg"},
+  {n:"Freddy Garcia",y:2001,t:"SEA",war:5.3,era:3.05,fip:3.48,k:16.8,bb:7.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Freddy_Garcia_BAL_2013.jpg"},
+  {n:"Tom Brewer",y:1956,t:"BOS",war:5.2,era:3.5,fip:3.51,k:12.2,bb:10.8,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Tom_Brewer_BOS_1961.jpg"},
+  {n:"Dave Boswell",y:1969,t:"MIN",war:5.2,era:3.23,fip:3.19,k:17.8,bb:9.3,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Dave_Boswell_DET_1971.jpg"},
+  {n:"Bob Moose",y:1972,t:"PIT",war:5.2,era:2.91,fip:2.43,k:15.5,bb:5.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Bob_Moose_PIT_1976.jpg"},
+  {n:"Len Barker",y:1980,t:"CLE",war:5.2,era:4.17,fip:3.29,k:17.8,bb:8.7,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Len_Barker_ML4_1987.jpg"},
+  {n:"Lucas Giolito",y:2019,t:"CHW",war:5.2,era:3.41,fip:3.43,k:32.3,bb:8.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Lucas_Giolito_BOS_2025.jpg"},
+  {n:"Mickey Lolich",y:1965,t:"DET",war:5.1,era:3.44,fip:2.92,k:22.3,bb:7.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Mickey_Lolich_SDN_1979.jpg"},
+  {n:"Vida Blue",y:1974,t:"OAK",war:5.1,era:3.25,fip:3.18,k:15.0,bb:8.5,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Vida_Blue_SFN_1986.jpg"},
+  {n:"Greg Maddux",y:1990,t:"CHC",war:5.1,era:3.46,fip:3.15,k:14.2,bb:7.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Greg_Maddux_SDN_2008.jpg"},
+  {n:"Pedro Martinez",y:1996,t:"MON",war:5.1,era:3.7,fip:3.27,k:24.6,bb:7.8,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Pedro_Martinez_PHI_2009.jpg"},
+  {n:"Gerrit Cole",y:2015,t:"PIT",war:5.1,era:2.6,fip:2.66,k:24.3,bb:5.3,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Gerrit_Cole_NYA_2024.jpg"},
+  {n:"Walker Buehler",y:2019,t:"LAD",war:5.1,era:3.26,fip:3.01,k:29.2,bb:5.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Walker_Buehler_BOS_2025.jpg"},
+  {n:"Julio Urias",y:2021,t:"LAD",war:5.0,era:2.96,fip:3.13,k:26.2,bb:5.1,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Julio_Urias_LAN_2023.jpg"},
+  {n:"Jim Maloney",y:1964,t:"CIN",war:4.9,era:2.71,fip:2.75,k:24.2,bb:9.4,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Jim_Maloney_CAL_1971.jpg"},
+  {n:"Steve Carlton",y:1969,t:"STL",war:4.9,era:2.17,fip:2.79,k:21.7,bb:9.6,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Steve_Carlton_MIN_1988.jpg"},
+  {n:"Brad Radke",y:1997,t:"MIN",war:4.9,era:3.87,fip:3.81,k:17.6,bb:4.9,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Brad_Radke_MIN_2006.jpg"},
+  {n:"Justin Thompson",y:1997,t:"DET",war:4.9,era:3.02,fip:3.83,k:16.9,bb:7.4,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Justin_Thompson_TEX_2005.jpg"},
+  {n:"Bob Rush",y:1950,t:"CHC",war:4.8,era:3.71,fip:3.58,k:8.5,bb:8.5,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Bob_Rush_CHA_1960.jpg"},
+  {n:"Curt Simmons",y:1953,t:"PHI",war:4.8,era:3.21,fip:3.43,k:13.9,bb:8.3,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Curt_Simmons_CAL_1967.jpg"},
+  {n:"Johnny Antonelli",y:1954,t:"NYG",war:4.8,era:2.3,fip:3.48,k:14.2,bb:8.8,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Johnny_Antonelli_Ml1_1961.jpg"},
+  {n:"Dave Stieb",y:1982,t:"TOR",war:4.8,era:3.25,fip:3.79,k:11.9,bb:6.3,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Dave_Stieb_TOR_1998.jpg"},
+  {n:"Kevin Appier",y:1992,t:"KCR",war:4.8,era:2.46,fip:2.98,k:17.6,bb:8.0,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Kevin_Appier_KCA_2004.jpg"},
+  {n:"Chris Sale",y:2013,t:"CHW",war:4.8,era:3.07,fip:3.17,k:26.1,bb:5.3,hs:"https://cdn.jsdelivr.net/gh/diamond-mine-baseball/dataservice@main/headshots/Chris_Sale_ATL_2025.jpg"},
 ];
 
 const maxWar = data[0].war;
@@ -312,7 +311,7 @@ data.forEach((p, i) => {
   wrap.style.animationDelay = (i * 55) + 'ms';
 
   const avatarContent = p.hs
-    ? `<img src="${CDN}${p.hs}" alt="${p.n}" onerror="this.parentNode.innerHTML='${initials}'">`
+    ? `<img src="${p.hs}" alt="${p.n}" onerror="this.parentNode.innerHTML='${initials}'">`
     : initials;
 
   wrap.innerHTML = `
